@@ -16,6 +16,8 @@ html class="no-js" lang="en"
 
     == analytics_init if GoogleAnalytics.valid_tracker?
 
+    = javascript_include_tag :application
+
   body
     = render "navigation"
     = render "messages"
@@ -27,5 +29,3 @@ html class="no-js" lang="en"
 
     javascript:
       App.currentUserData = #{{current_user.to_json}};
-
-    = javascript_include_tag :application

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.5.7"
+ruby "2.5.1"
 
 gem "pg"
 gem "rails", "5.1.6.2"
@@ -13,6 +13,7 @@ gem "foundation-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
+
 
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
@@ -82,6 +83,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
   gem "slim_lint", require: false
+  gem 'rack_session_access'
 end
 
 group :development do
