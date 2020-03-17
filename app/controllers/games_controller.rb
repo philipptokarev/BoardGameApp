@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = FindGame.new(Game.all).call(permitted_params)
+    @games = FindGame.new(Game.where(status: :published)).call(permitted_params)
   end
 
   def show

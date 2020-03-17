@@ -3,7 +3,7 @@ div
   h1 = @game.name
   - unless @game.average_rating.nil?
     h2 Average rating
-    .average-reviews-rating data-score = @game.average_rating
+    .average-reviews-rating data-score = @game.rating
     span
       | Based on
       = @game.reviews.count

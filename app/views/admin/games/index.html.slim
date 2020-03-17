@@ -1,6 +1,7 @@
 table
   thead
     th = active_link_to "Rating", sort_column: :rating, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
+    th = active_link_to "Status", sort_column: :status, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
     th = active_link_to "Name", sort_column: :name, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
     th Description
     th Image

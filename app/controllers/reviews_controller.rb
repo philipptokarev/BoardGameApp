@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
   def create
     review = @game.reviews.new(review_params.merge(user_id: current_user.id))
     if review.save
+      @game.rating = @game.average_rating
+      @game.save
       redirect_to game_path(@game), notice: 'Review created'
     else
       render :new

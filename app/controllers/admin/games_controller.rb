@@ -39,7 +39,7 @@ class Admin::GamesController < Admin::BaseController
   end
 
   def game_params
-    params.require(:game).permit(:name, :description, :video, :reference, :image)
+    params.require(:game).permit(:name, :description, :video, :reference, :image, :status)
   end
 
   def find_game
