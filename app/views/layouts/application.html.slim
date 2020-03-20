@@ -16,11 +16,12 @@ html class="no-js" lang="en"
 
     == analytics_init if GoogleAnalytics.valid_tracker?
 
-    = javascript_include_tag :application
-
   body
     = render "navigation"
     = render "messages"
+
+    = javascript_include_tag :application
+
 
     main.container
       = yield

@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   namespace :admin do
-    root to: 'base#index'
+    root to: "base#index"
 
     resources :games
   end
 
-  get 'catalog', to: 'games#index'
-  resources :games, only: [:show] do
+  resources :users, only: [:index, :show]
+  resources :games, only: [:index, :show] do
     resources :reviews
   end
+
+  get 'contact/:id', to: "users#contact", as: 'contact'
+  get 'edit_user/:id', to: 'users#edit', as: 'edit_info'
+  patch 'users/:id', to: "users#update"
 end

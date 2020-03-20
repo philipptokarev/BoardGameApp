@@ -1,16 +1,18 @@
-div
-  = image_tag @game.image, width: '200'
-  h1 = @game.name
-  - unless @game.average_rating.nil?
-    h2 Average rating
-    .average-reviews-rating data-score = @game.rating
-    span
-      | Based on
-      = @game.reviews.count
-      |  reviews
-  end
-  p = @game.description
-p
+.row
+  .medium-8
+    = image_tag @game.image, width: '200'
+    h1 = @game.name
+    - unless @game.average_rating.nil?
+      h2 Average rating
+      .average-reviews-rating data-score = @game.rating
+      span
+        | Based on
+        = @game.reviews.count
+        |  reviews
+    end
+    p = @game.description
+.row
+  p.medium-8
   -if user_signed_in?
     - unless current_user.reviews.find_by(game_id: @game.id)
       Here you can leave review for this game
