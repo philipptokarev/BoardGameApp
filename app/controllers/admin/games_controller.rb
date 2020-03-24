@@ -1,17 +1,17 @@
 class Admin::GamesController < Admin::BaseController
-  before_action :find_game, only: %i[edit update destroy]
+  expose :game, find: ->(id, scope){ scope.find(id) }
+
   def index
     @games = FindGame.new(Game.all).call(permitted_params)
   end
 
-  def new
-    @game = Game.new
-  end
+  def new; end
 
   def create
     game = Game.new(game_params)
     if game.save
-      redirect_to admin_games_path, notice: 'Game added'
+      flash[:success] = 'Game added'
+      redirect_to admin_games_path
     else
       render :new
     end
@@ -20,16 +20,18 @@ class Admin::GamesController < Admin::BaseController
   def edit; end
 
   def update
-    if @game.update(game_params)
-      redirect_to admin_games_path, notice: 'Game updated'
+    if game.update(game_params)
+      flash[:success] = 'Game updated'
+      redirect_to admin_games_path
     else
       render :edit
     end
   end
 
   def destroy
-    @game.destroy
-    redirect_to admin_games_path, notice: 'Game deleted'
+    game.destroy
+    flash[:success] = 'Game deleted'
+    redirect_to admin_games_path
   end
 
   private
@@ -40,9 +42,5 @@ class Admin::GamesController < Admin::BaseController
 
   def game_params
     params.require(:game).permit(:name, :description, :video, :reference, :image, :status)
-  end
-
-  def find_game
-    @game = Game.find(params[:id])
   end
 end

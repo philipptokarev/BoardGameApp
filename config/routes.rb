@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  get 'contact/:id', to: "users#contact", as: 'contact'
-  get 'edit_user/:id', to: 'users#edit', as: 'edit_info'
-  patch 'users/:id', to: "users#update"
+  get "contact/:id", to: "users#contact", as: "contact"
+  get "edit_user/:id", to: "users#edit", as: "edit_info"
+  patch "users/:id", to: "users#update"
+  post "send_message", to: "users#send_msg", as: "send_msg"
 end
