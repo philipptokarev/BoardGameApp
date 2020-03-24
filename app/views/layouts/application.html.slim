@@ -20,6 +20,9 @@ html class="no-js" lang="en"
     = render "navigation"
     = render "messages"
 
+    = javascript_include_tag :application
+
+
     main.container
       = yield
 
@@ -27,5 +30,3 @@ html class="no-js" lang="en"
 
     javascript:
       App.currentUserData = #{{current_user.to_json}};
-
-    = javascript_include_tag :application

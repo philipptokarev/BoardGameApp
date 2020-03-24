@@ -1,20 +1,19 @@
 require "rails_helper"
 
 feature "Cancel Account" do
-  include_context "current user signed in"
 
-  background do
-    visit edit_user_registration_path(current_user)
-  end
+  let(:user) { create(:user) }
 
   scenario "User cancels account" do
+    login_as(user)
+    visit edit_user_registration_path(user)
     click_link "Cancel my account"
 
     expect(page).to have_content("Sign in")
     expect(page).to have_content("Bye! Your account has been successfully cancelled. We hope to see you again soon.")
 
     click_link "Sign in"
-    fill_form(:user, current_user.attributes.slice(:email, :password))
+    fill_form(:user, user.attributes.slice(:email, :password))
     click_button "Sign in"
 
     expect(page).to have_content("Invalid Email or password.")
