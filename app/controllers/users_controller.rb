@@ -1,21 +1,33 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[show contact edit update destroy correct_user]
   before_action :correct_user, only: %i[edit update]
 
-  def index
-    @users = User.all
-  end
+  expose :users, ->{ User.all }
+  expose :user, find: ->(id, scope){ scope.find(id) }
+
+  def index; end
 
   def show; end
 
-  def contact; end
+  def contact
+    return @message = Message.new(user_id: user.id,name: current_user.full_name, email: current_user.email) if user_signed_in?
+    @message = Message.new(user_id: user.id)
+  end
+
+  def send_msg
+    if Message.create(msg_params)
+      UserMailer.contact(User.find(msg_params[:user_id]).email, msg_params[:name], msg_params[:email], msg_params[:text])
+      redirect_to users_path, notice: "Message sent."
+    else
+      redirect_to contact_path(@user), error: "Message didn't send"
+    end
+  end
 
   def edit; end
 
   def update
-    if @user.update_attributes(user_params)
+    if user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to user_path(@user)
+      redirect_to user_path(user)
     else
       render 'edit'
     end
@@ -27,11 +39,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:image, :description)
   end
 
-  def find_user
-    @user = User.find(params[:id])
+  def msg_params
+    params.require(:message).permit(:name, :email, :text, :user_id)
   end
 
   def correct_user
-    redirect_to(root_path, alert: 'You do not have access to this page') unless current_user.id == @user.id
+    redirect_to(root_path, alert: 'You do not have access to this page') unless current_user.id == user.id
   end
 end
