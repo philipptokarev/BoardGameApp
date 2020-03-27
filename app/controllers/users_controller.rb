@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
   expose :users, ->{ User.all }
-  expose :user, find: ->(id, scope){ scope.find(id) }
+  expose :user
 
   def index; end
 

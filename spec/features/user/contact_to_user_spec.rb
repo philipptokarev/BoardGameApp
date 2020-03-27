@@ -1,11 +1,11 @@
 require "rails_helper"
 
-feature "Userr contact with another user" do
+feature "Contact user" do
 
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
 
-  scenario "Successfully" do
+  scenario "User contact with user successfully" do
     login_as(user)
     visit contact_path(another_user)
     fill_form(:message, { text: Faker::Lorem.sentence(20) })

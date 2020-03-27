@@ -1,5 +1,5 @@
 class Admin::GamesController < Admin::BaseController
-  expose :game, find: ->(id, scope){ scope.find(id) }
+  expose :game
 
   def index
     @games = FindGame.new(Game.all).call(permitted_params)

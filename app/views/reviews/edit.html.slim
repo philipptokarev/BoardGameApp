@@ -1,12 +1,13 @@
-h1 Edit review
-= simple_form_for [game, review] do |r|
-  #rating-form data-score = review.rating
-    label Rating
+.row
+  h1 Edit review
+  = simple_form_for [game, review] do |r|
+    #rating-form data-score = review.rating
+      label Rating
 
-  = r.input :review
+    = r.input :review
 
-  = r.submit 'Update'
-end
+    = r.submit 'Update'
+  end
 javascript:
   jQuery('#rating-form').raty({
     path: '/assets/',

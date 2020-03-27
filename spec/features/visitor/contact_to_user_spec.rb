@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature "Visitor contact with another user" do
+feature "Contact user" do
 
   let!(:user) { create(:user) }
 
-  scenario "Successfully" do
+  scenario "Visitor contact user successfully" do
     visit contact_path(user)
     fill_form(:message, { name: "Phil", email: "phil@yandex.ru", text: Faker::Lorem.sentence(20) })
     click_button "Create Message"

@@ -1,8 +1,8 @@
-.row.columns.medium-8
+.row
   - unless user.full_name.empty?
     h1 = user.full_name
   h1 = user.email
-  - unless user.description.nil?
+  - if user.description
     -unless user.description.empty?
       p = user.description
 

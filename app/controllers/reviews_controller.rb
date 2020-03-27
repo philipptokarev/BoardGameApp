@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   expose :game, find: ->(id, scope){ scope.find(id) }
-  expose :review, find: ->(id, scope){ scope.find(id) }
+  expose :review
 
   def new; end
 

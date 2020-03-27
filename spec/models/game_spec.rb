@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Game, type: :model do
+RSpec.describe Game do
   it { is_expected.to validate_presence_of :name }
 
   it { is_expected.to validate_presence_of :image }
@@ -11,8 +11,8 @@ RSpec.describe Game, type: :model do
 
   context 'validation test' do
     it 'should successfully save' do
-      game = Game.create(name: 'Scythe', description: 'Some description', image: 'image').save
-      expect(game).to be_truthy
+      game = Game.create(name: 'Scythe', description: 'Some description', image: 'image')
+      expect(game).to be_valid
     end
   end
 end
