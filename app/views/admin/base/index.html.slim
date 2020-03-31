@@ -1,5 +1,10 @@
 .row
-  h1 Hello, it's admin panel, where u can add new board game!
-  = link_to 'Game catalog', admin_games_path
-  '
-  = link_to 'Add new game', new_admin_game_path
+  h2 Hello, it's admin panel.
+  h2.title
+    | You can get
+    '
+    = link_to 'game catalog', admin_games_path
+  h2.title
+    | Here you can
+    '
+    = link_to 'add new game', new_admin_game_path

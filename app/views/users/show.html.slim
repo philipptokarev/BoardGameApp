@@ -1,8 +1,28 @@
 .row
-  - unless user.full_name.empty?
-    h1 = user.full_name
-  h1 = user.email
-  - if user.description
-    -unless user.description.empty?
-      p = user.description
+  .column.medium-8
+    - unless user.image.nil? || (user.image && user.image.empty?)
+      = image_tag user.image, class: "profile-image"
+    - else
+      img.profile-image src=asset_path("profile.png")
+    - unless user.full_name.empty?
+      h1.title = user.full_name
+    h1.title
+      | My email:
+      '
+      = user.email
+    h1.title
+      = link_to "Contact me", contact_path(user)
+    - if user.description
+      - unless user.description.empty?
+        p = user.description
+  sidebar.column.medium-4
+    h2.title Games where leaved reviews
+    ul
+      - user.reviews.each do |r|
+        li
+          = r.review
+          .
+          | Get
+          '
+          = link_to "game page", game_path(r.game_id)
 

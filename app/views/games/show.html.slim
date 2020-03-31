@@ -1,33 +1,41 @@
 .row
-  = image_tag @game.image, width: '200'
-  h1 = @game.name
-  - unless @game.average_rating.nil?
-    h2 Average rating
-    .average-reviews-rating data-score = @game.rating
-    span
-      | Based on
-      = @game.reviews.count
-      |  reviews
-  end
-  p = @game.description
-.row
-  - if user_signed_in?
-    - unless current_user.reviews.find_by(game_id: @game.id)
-      Here you can leave review for this game
-      = link_to 'Add review', new_game_review_path(@game)
+  h1.column.medium-8 = @game.name
+  .column.medium-8
+    = image_tag @game.image, class: "image-game"
+  sidebar.column.medium-4
+    - unless @game.average_rating.nil?
+      h2.title Average rating
+      .average-reviews-rating data-score = @game.rating
+      span
+        | Based on
+        '
+        = @game.reviews.count
+        |  reviews
     end
-    = render @game.reviews
-  - else
-    | Please
-    '
-    = link_to 'sign in', new_user_session_path
-    '
-    | or
-    '
-    = link_to 'sign up', new_user_registration_path
-    '
-    to leave a review for this game
-  end
+    h2.title Description
+    p
+      = @game.description
+.row
+  .column.medium-8
+    h2.title Reviews from users
+    - if user_signed_in?
+      - unless current_user.reviews.find_by(game_id: @game.id)
+        | Here you can leave review for this game
+        '
+        = link_to 'add review', new_game_review_path(@game)
+      end
+      = render @game.reviews
+    - else
+      | Please
+      '
+      = link_to 'sign in', new_user_session_path
+      '
+      | or
+      '
+      = link_to 'sign up', new_user_registration_path
+      '
+      to leave a review for this game
+    end
 javascript:
   $('.average-reviews-rating').raty({
     readOnly: true,
