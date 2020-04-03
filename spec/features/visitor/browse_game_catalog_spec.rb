@@ -2,11 +2,11 @@ require "rails_helper"
 
 feature "Visitor browse game catalog" do
 
-  let!(:game) { create(:game) }
+  let!(:games) { create(:game) }
 
   scenario "Successfully" do
     visit root_path
     click_link "game catalog"
-    expect(page).to have_content("Game")
+    expect(page).to have_content("BoardGameName")
   end
 end

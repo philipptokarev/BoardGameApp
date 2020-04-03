@@ -10,7 +10,7 @@ feature "User" do
     scenario "Leave successfully" do
       login_as(user)
       visit game_path(game)
-      click_link "Add review"
+      click_link "add review"
       fill_in "Review", with: Faker::Lorem.sentence(2)
       click_button "Leave"
       expect(page).to have_content("Review created")
@@ -19,7 +19,7 @@ feature "User" do
     scenario "Edit successfully" do
       login_as(user)
       visit game_path(game)
-      click_link "Add review"
+      click_link "add review"
       fill_in "Review", with: Faker::Lorem.sentence(2)
       click_button "Leave"
       click_link "Edit"
@@ -31,7 +31,7 @@ feature "User" do
     scenario "Delete successfully" do
       login_as(user)
       visit game_path(game)
-      click_link "Add review"
+      click_link "add review"
       find("div#rating-form")
       fill_in "Review", with: Faker::Lorem.sentence(2)
       click_button "Leave"

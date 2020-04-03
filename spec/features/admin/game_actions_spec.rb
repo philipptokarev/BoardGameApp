@@ -14,7 +14,7 @@ feature "Admin" do
   scenario "create new game" do
     login_as(admin)
     visit admin_root_path
-    click_link "Add new game"
+    click_link "add new game"
     fill_form(:game, { name: "Scythe", description: "Scythe description", image: "Scythe image" })
     click_button "Create"
     expect(page).to have_content("Game added")

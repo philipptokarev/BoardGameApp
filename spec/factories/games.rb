@@ -3,5 +3,6 @@ FactoryBot.define do
     sequence(:name) { |n| "BoardGameName#{n}" }
     sequence(:description) { |n| "Some description#{n}" }
     sequence(:image) { |n| "image.jpg"}
+    sequence(:status) { |n| :published }
   end
 end
