@@ -4,8 +4,8 @@ tr
   td = game.name
   td = game.description
   td
-    img style="width: 100px" src = game.image
+    =image_tag game.image, style: "width: 100px"
   td = I18n.l(game.created_at, format: :us)
   td = I18n.l(game.updated_at, format: :us)
   td = link_to 'Edit', edit_admin_game_path(game)
-  td = link_to 'Delete', admin_game_path(game), method: :delete, data: { confirm: 'You sure?' }
+  td = link_to 'Delete', admin_game_path(game), method: :delete, data: { confirm: "You sure?" }

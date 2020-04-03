@@ -1,10 +1,11 @@
 class Game < ApplicationRecord
   has_many :reviews, dependent: :destroy
-  has_many :users, through: :reviews
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :image, presence: true
+  validates_presence_of :image
+
+  mount_uploader :image, ImageUploader
 
   scope :published, ->{ where(status: :published) }
 

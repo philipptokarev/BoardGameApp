@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "Review updated"
       redirect_to game_path(game)
     else
-      redirect_to :edit
+      render :edit
     end
   end
 

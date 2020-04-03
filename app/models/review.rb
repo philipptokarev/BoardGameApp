@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
-  belongs_to :users, optional: true
-  belongs_to :games, optional: true
+  belongs_to :user
+  belongs_to :game, counter_cache: true
 end
