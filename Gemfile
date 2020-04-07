@@ -66,6 +66,7 @@ group :test do
   gem "shoulda-matchers"
   gem "terminal-notifier-guard"
   gem "webmock", require: false
+  gem 'simplecov', require: false
 end
 
 group :development, :test do

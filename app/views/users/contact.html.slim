@@ -8,8 +8,11 @@
   | User will get notifiction on his email.
   = simple_form_for @message, url: send_msg_path do |f|
     = f.input :name
-    = f.input :email, required: true
-    = f.input :text
-    = f.input :user_id, as: :hidden
-    = f.submit
 
+    = f.input :email, required: true
+
+    = f.input :text
+
+    = f.input :user_id, as: :hidden
+
+    = f.submit

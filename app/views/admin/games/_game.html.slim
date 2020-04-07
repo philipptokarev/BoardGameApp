@@ -4,7 +4,7 @@ tr
   td = game.name
   td = game.description
   td
-    =image_tag game.image, style: "width: 100px"
+    = image_tag game.image, style: "width: 100px"
   td = I18n.l(game.created_at, format: :us)
   td = I18n.l(game.updated_at, format: :us)
   td = link_to 'Edit', edit_admin_game_path(game)
