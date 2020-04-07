@@ -4,7 +4,7 @@ Board Game Application where you can get desriptions about boardgames. Also you 
 
 ## Login as admin
 You can sign in with this info
-login: tok.phil@yandex.ru
+login: admin@example.com
 password: 123456
 
 ## Links
