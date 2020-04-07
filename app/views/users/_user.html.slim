@@ -1,8 +1,5 @@
 section.profile
-  - unless user.image.nil? || (user.image && user.image.empty?)
-    = image_tag user.image
-  - else
-    img src=asset_path("profile.png")
+  = image_tag user.image
   .fullname = user.full_name
   .email = user.email
   = link_to "Contact me", contact_path(user)

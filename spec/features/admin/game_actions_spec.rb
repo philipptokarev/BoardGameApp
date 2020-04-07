@@ -15,7 +15,8 @@ feature "Admin" do
     login_as(admin)
     visit admin_root_path
     click_link "add new game"
-    fill_form(:game, { name: "Scythe", description: "Scythe description", image: "Scythe image" })
+    attach_file('Image', "spec/support/images/image.jpg")
+    fill_form(:game, { name: "Scythe", description: "Scythe description" })
     click_button "Create"
     expect(page).to have_content("Game added")
   end
@@ -24,7 +25,8 @@ feature "Admin" do
     login_as(admin)
     visit admin_games_path
     click_link ("Edit")
-    fill_form(:game, { name: "Scythe1", description: "Scythe description", image: "Scythe image" })
+    attach_file('Image', "spec/support/images/image.jpg")
+    fill_form(:game, { name: "Scythe1", description: "Scythe description" })
     click_button "Save"
     expect(page).to have_content("Game updated")
   end

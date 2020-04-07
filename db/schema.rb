@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200323111146) do
+ActiveRecord::Schema.define(version: 20200401165652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "citext"
 
   create_table "games", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 20200323111146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "draft"
+    t.integer "reviews_count"
   end
 
   create_table "messages", force: :cascade do |t|

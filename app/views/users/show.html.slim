@@ -1,9 +1,6 @@
 .row
   .column.medium-8
-    - unless user.image.nil? || (user.image && user.image.empty?)
-      = image_tag user.image, class: "profile-image"
-    - else
-      img.profile-image src=asset_path("profile.png")
+    = image_tag user.image, class: "profile-image"
     - unless user.full_name.empty?
       h1.title = user.full_name
     h1.title
@@ -18,11 +15,6 @@
   sidebar.column.medium-4
     h2.title Games where leaved reviews
     ul
-      - user.reviews.each do |r|
+      - user.games.each do |g|
         li
-          = r.review
-          .
-          | Get
-          '
-          = link_to "game page", game_path(r.game_id)
-
+          = link_to g.name, g

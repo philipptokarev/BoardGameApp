@@ -46,6 +46,8 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem "carrierwave"
+gem 'fog-aws'
 
 group :staging, :production do
   gem "newrelic_rpm"

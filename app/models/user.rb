@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :messages, dependent: :destroy
   has_many :games, through: :reviews
+  mount_uploader :image, ImageUploader
 
   def admin?
     role == "admin"

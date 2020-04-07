@@ -3,13 +3,13 @@
   .column.medium-8
     = image_tag @game.image, class: "image-game"
   sidebar.column.medium-4
-    - unless @game.average_rating.nil?
+    - if @game.average_rating
       h2.title Average rating
       .average-reviews-rating data-score = @game.rating
       span
         | Based on
         '
-        = @game.reviews.count
+        = @game.reviews_count + 1
         |  reviews
     end
     h2.title Description

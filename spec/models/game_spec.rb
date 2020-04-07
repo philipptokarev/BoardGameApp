@@ -11,7 +11,7 @@ RSpec.describe Game do
 
   context 'validation test' do
     it 'should successfully save' do
-      game = Game.create(name: 'Scythe', description: 'Some description', image: 'image')
+      game = Game.create(name: 'Scythe', description: 'Some description', image: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/image.jpg'), 'image/jpeg'))
       expect(game).to be_valid
     end
   end

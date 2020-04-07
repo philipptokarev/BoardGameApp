@@ -8,7 +8,8 @@ feature "User edit profile info" do
   scenario "User cancels account" do
     login_as(user)
     visit edit_info_path(user)
-    fill_form(:user, { image: "url", description: text })
+    attach_file('Image', "spec/support/images/image.jpg")
+    fill_form(:user, description: text )
     click_button "Save"
     expect(page).to have_content("Profile updated")
     visit user_path(user)
