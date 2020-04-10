@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
-  expose :users, ->{ User.all }
+  expose :users, ->{ User.all.page(params[:page]).per(4) }
   expose :user
 
   def index; end

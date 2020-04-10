@@ -5,13 +5,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "shoulda/matchers"
 require "rack_session_access/capybara"
-require 'simplecov'
-SimpleCov.start do
-  add_group "Models", "app/models"
-  add_group "Controllers", "app/controllers"
-  add_group "Multiple Files", ["app/models", "app/controllers"] # You can also pass in an array
-end
-
+require "simplecov"
+SimpleCov.start "rails"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
