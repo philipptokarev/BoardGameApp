@@ -1,12 +1,10 @@
 require "rails_helper"
 
 feature "User" do
-
   let(:user) { create(:user) }
   let(:game) { create(:game) }
 
   describe "Review for a game" do
-
     scenario "Leave successfully" do
       login_as(user)
       visit game_path(game)

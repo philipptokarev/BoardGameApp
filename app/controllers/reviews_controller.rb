@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
-  expose :game, find: ->(id, scope){ scope.find(id) }
+  expose :game, find: ->(id, scope) { scope.find(id) }
   expose :review
 
-  def new; end
+  def new
+  end
 
   def create
     review = game.reviews.new(review_params.merge(user_id: current_user.id))
@@ -15,7 +16,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if review.update(review_params)
@@ -35,6 +37,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:review, :rating)
   end

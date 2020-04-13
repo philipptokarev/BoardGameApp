@@ -297,9 +297,6 @@ GEM
       rack (>= 1.0.0, < 3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rack_session_access (0.2.0)
-      builder (>= 2.0.0)
-      rack (>= 1.0.0)
     rails (5.1.6.2)
       actioncable (= 5.1.6.2)
       actionmailer (= 5.1.6.2)
@@ -517,7 +514,6 @@ DEPENDENCIES
   pundit
   rack-canonical-host
   rack-mini-profiler!
-  rack_session_access
   rails (= 5.1.6.2)
   rails-assets-jquery-ujs!
   rails-assets-jquery2!

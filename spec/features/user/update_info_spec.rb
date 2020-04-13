@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Update Account" do
-
   let(:user) { create(:user) }
 
   scenario "User updates account with valid data" do

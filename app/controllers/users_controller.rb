@@ -1,35 +1,38 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
-  expose :users, ->{ User.all.page(params[:page]).per(4) }
+  expose :users, -> { User.all.page(params[:page]).per(4) }
   expose :user
 
-  def index; end
+  def index
+  end
 
-  def show; end
+  def show
+  end
 
   def contact
-    return @message = Message.new(user_id: user.id,name: current_user.full_name, email: current_user.email) if user_signed_in?
+    return @message = Message.new(user_id: user.id, name: current_user.full_name, email: current_user.email) if user_signed_in?
     @message = Message.new(user_id: user.id)
   end
 
   def send_msg
     if Message.create(msg_params)
-      UserMailer.contact(User.find(msg_params[:user_id]).email, msg_params[:name], msg_params[:email], msg_params[:text])
+      contact_user
       redirect_to users_path, notice: "Message sent."
     else
       redirect_to contact_path(@user), error: "Message didn't send"
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to user_path(user)
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -44,6 +47,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    redirect_to(root_path, alert: 'You do not have access to this page') unless current_user.id == user.id
+    redirect_to(root_path, alert: "You do not have access to this page") unless current_user.id == user.id
+  end
+
+  def contact_user
+    UserMailer.contact(User.find(msg_params[:user_id]).email, msg_params[:name], msg_params[:email], msg_params[:text])
   end
 end

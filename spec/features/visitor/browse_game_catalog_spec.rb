@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Visitor browse game catalog" do
-
   let!(:games) { 10.times { create(:game) } }
 
   scenario "Successfully" do

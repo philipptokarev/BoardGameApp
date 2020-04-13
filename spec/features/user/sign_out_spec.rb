@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "User sign out" do
-
   let(:user) { create(:user) }
 
   scenario "Successfully" do

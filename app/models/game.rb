@@ -3,11 +3,11 @@ class Game < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates_presence_of :image
+  validates :image, presence: true
 
   mount_uploader :image, ImageUploader
 
-  scope :published, ->{ where(status: :published) }
+  scope :published, -> { where(status: :published) }
 
   def average_rating
     return nil if reviews.count.zero?

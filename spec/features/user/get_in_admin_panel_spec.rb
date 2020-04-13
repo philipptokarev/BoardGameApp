@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Admin panel" do
-
   let(:user) { create(:user) }
 
   scenario "User without admin role get in admin panel unsuccessfully" do

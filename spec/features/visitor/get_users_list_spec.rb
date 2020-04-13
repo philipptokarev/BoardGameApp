@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Get users list" do
-
   let!(:users) { 10.times { create(:user) } }
 
   scenario "Visitor contact user successfully" do
