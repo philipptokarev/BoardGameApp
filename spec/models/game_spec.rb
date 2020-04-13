@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Game do
   it { is_expected.to validate_presence_of :name }
@@ -9,9 +9,9 @@ RSpec.describe Game do
 
   it { is_expected.to have_many :reviews }
 
-  context 'validation test' do
-    it 'should successfully save' do
-      game = Game.create(name: 'Scythe', description: 'Some description', image: Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/image.jpg'), 'image/jpeg'))
+  context "validation test" do
+    it "successfully save" do
+      game = described_class.create(name: "Scythe", description: "Some description", image: Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "images", "image.jpg"), "image/jpeg"))
       expect(game).to be_valid
     end
   end

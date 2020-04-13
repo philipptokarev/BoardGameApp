@@ -4,12 +4,13 @@
     #rating-form
       label Rating
 
-    = r.input :review
+    = r.input :review, required: true
 
     = r.submit 'Leave'
   end
 javascript:
   jQuery('#rating-form').raty({
     path: '/assets/',
+    score: 0,
     scoreName: 'review[rating]'
   });

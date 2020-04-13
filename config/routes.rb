@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :games
   end
 
-  resources :users, only: [:index, :show]
-  resources :games, only: [:index, :show] do
+  resources :users, only: %i[index show]
+  resources :games, only: %i[index show] do
     resources :reviews
   end
 

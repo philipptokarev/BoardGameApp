@@ -14,7 +14,6 @@ gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "uglifier", ">= 2.7.2"
 
-
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
   gem "rails-assets-jquery2"
@@ -28,11 +27,13 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "carrierwave"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
 gem "flamegraph"
+gem "fog-aws"
 gem "google-analytics-rails"
 gem "health_check"
 gem "interactor"
@@ -46,8 +47,6 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
-gem "carrierwave"
-gem 'fog-aws'
 
 group :staging, :production do
   gem "newrelic_rpm"
@@ -64,6 +63,7 @@ group :test do
   gem "poltergeist"
   gem "rspec-its"
   gem "shoulda-matchers"
+  gem "simplecov", require: false
   gem "terminal-notifier-guard"
   gem "webmock", require: false
 end
@@ -85,7 +85,6 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
   gem "slim_lint", require: false
-  gem 'rack_session_access'
 end
 
 group :development do

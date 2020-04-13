@@ -1,8 +1,7 @@
 require "rails_helper"
 
 feature "Visitor sign up" do
-
-  let!(:registered_user) { create(:user) }
+  let(:registered_user) { create(:user) }
 
   scenario "Successfully" do
     visit root_path

@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "Cancel Account" do
-
   let(:user) { create(:user) }
 
   scenario "User cancels account" do

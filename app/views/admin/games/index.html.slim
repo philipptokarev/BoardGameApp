@@ -1,12 +1,18 @@
 .row
     table
-      thead
-        th = active_link_to "Rating", sort_column: :rating, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
-        th = active_link_to "Status", sort_column: :status, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
-        th = active_link_to "Name", sort_column: :name, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
-        th Description
-        th Image
-        th = active_link_to "Created at", sort_column: :created_at, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
-        th colspan = 3 = active_link_to "Updated at", sort_column: :updated_at, sort_direction: params[:sort_direction] == 'asc' ? 'desc' : 'asc'
-      tbody
-        = render @games
+        thead
+            th = active_link_to "Rating", sort_column: :rating,
+                                        sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+            th = active_link_to "Status", sort_column: :status,
+                                        sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+            th = active_link_to "Name", sort_column: :name,
+                                        sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+            th Description
+            th Image
+            th = active_link_to "Created at", sort_column: :created_at,
+                                            sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+            th colspan = 3 = active_link_to "Updated at", sort_column: :updated_at,
+                                                        sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+        tbody
+            = render @games
+    = paginate @games

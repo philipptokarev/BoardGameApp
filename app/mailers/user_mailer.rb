@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  def contact(user_email,name, email, text)
+  def contact(user_email, name, email, text)
     @name = name
     @email = email
     @text = text

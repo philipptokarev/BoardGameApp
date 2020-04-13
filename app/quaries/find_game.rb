@@ -7,7 +7,7 @@ class FindGame
 
   def call(params)
     scoped = sort(initial_scope, params[:sort_column], params[:sort_direction])
-    scoped = paginate(scoped, params[:game_count])
+    scoped = paginate(scoped, params)
     scoped
   end
 
@@ -19,7 +19,15 @@ class FindGame
     scoped.order(sort_column => sort_direction)
   end
 
-  def paginate(scoped, game_count)
-    scoped.page().per(game_count)
+  def paginate(scoped, params)
+    scoped.page(page(params)).per(game_count(params))
+  end
+
+  def page(params)
+    params[:page] || 1
+  end
+
+  def game_count(params)
+    params[:game_count] || 6
   end
 end

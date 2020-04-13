@@ -10,6 +10,6 @@ class GamesController < ApplicationController
   private
 
   def permitted_params
-    params.permit(:sort_column, :sort_direction, :game_count)
+    params.permit(:sort_column, :sort_direction, :page)
   end
 end

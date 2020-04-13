@@ -1,39 +1,47 @@
-.title{
+.title {
   font-size: 1.7em;
 }
-.row{
-  .column.medium-8{
-    .image-game{
+
+.row {
+  .column.medium-8 {
+    .image-game {
       width: 100%;
     }
   }
 }
-sidebar.medium-4{
-  .average-reviews-rating{
+
+sidebar.medium-4 {
+  .average-reviews-rating {
     margin: 5px 0;
   }
-  h2.title{
+
+  h2.title {
     margin: 0;
   }
-  span{
+
+  span {
     font-weight: bold;
   }
 }
-.game, .profile{
-  &:last-child{
+
+.game, .profile {
+  &:last-child {
     margin-right: 0;
   }
-  img{
+
+  img {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
-  width: 45%;
+
   display: inline-block;
+  width: 45%;
   margin-right: 5%;
   margin-bottom: 50px;
 }
-.profile-image{
+
+.profile-image {
   width: 300px;
   height: 300px;
   object-fit: cover;

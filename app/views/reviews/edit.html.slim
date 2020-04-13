@@ -4,7 +4,7 @@
     #rating-form data-score = review.rating
       label Rating
 
-    = r.input :review
+    = r.input :review, required: true
 
     = r.submit 'Update'
   end
