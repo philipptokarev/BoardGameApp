@@ -8,7 +8,7 @@
       '
       = user.email
     h1.title
-      = link_to "Contact me", contact_path(user)
+      = link_to "Contact me", user_message_index_path(user)
     - if user.description
       - unless user.description.empty?
         p = user.description

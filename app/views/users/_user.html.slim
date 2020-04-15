@@ -2,6 +2,6 @@ section.profile
   = image_tag user.image
   .fullname = user.full_name
   .email = user.email
-  = link_to "Contact me", contact_path(user)
+  = link_to "Contact me", user_message_index_path(user)
   .
   = link_to "About me", user_path(user)
