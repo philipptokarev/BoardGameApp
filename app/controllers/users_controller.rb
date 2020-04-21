@@ -10,20 +10,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def contact
-    return @message = Message.new(user_id: user.id, name: current_user.full_name, email: current_user.email) if user_signed_in?
-    @message = Message.new(user_id: user.id)
-  end
-
-  def send_msg
-    if Message.create(msg_params)
-      contact_user
-      redirect_to users_path, notice: "Message sent."
-    else
-      redirect_to contact_path(@user), error: "Message didn't send"
-    end
-  end
-
   def edit
   end
 
@@ -48,9 +34,5 @@ class UsersController < ApplicationController
 
   def correct_user
     redirect_to(root_path, alert: "You do not have access to this page") unless current_user.id == user.id
-  end
-
-  def contact_user
-    UserMailer.contact(User.find(msg_params[:user_id]).email, msg_params[:name], msg_params[:email], msg_params[:text])
   end
 end

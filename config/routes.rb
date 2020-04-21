@@ -8,13 +8,14 @@ Rails.application.routes.draw do
     resources :games
   end
 
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    resources :message, only: %i[index]
+    post "send_message", to: "message#contact"
+  end
   resources :games, only: %i[index show] do
     resources :reviews
   end
 
-  get "contact/:id", to: "users#contact", as: "contact"
   get "edit_user/:id", to: "users#edit", as: "edit_info"
   patch "users/:id", to: "users#update"
-  post "send_message", to: "users#send_msg", as: "send_msg"
 end

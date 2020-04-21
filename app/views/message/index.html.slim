@@ -1,0 +1,18 @@
+.row
+  p
+  | You will contact to
+  '
+  = user.email
+  | .
+  '
+  | User will get notifiction on his email.
+  = simple_form_for message, url: user_send_message_path do |f|
+    = f.input :name, required: true, input_html: { value: current_user.try(:full_name) }
+
+    = f.input :email, as: :email, required: true, input_html: { value: current_user.try(:email) }
+
+    = f.input :text, required: true
+
+    = f.input :user_id, as: :hidden, input_html: { value: user.id }
+
+    = f.submit
