@@ -22,6 +22,6 @@ class MessageController < ApplicationController
   end
 
   def contact_user
-    UserMailer.contact(user.email, msg_params[:name], msg_params[:email], msg_params[:text])
+    UserMailer.contact(user.email, msg_params[:name], msg_params[:email], msg_params[:text]).deliver_now
   end
 end
