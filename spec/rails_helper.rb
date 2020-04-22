@@ -1,11 +1,11 @@
 ENV["RAILS_ENV"] ||= "test"
 
+require "simplecov"
+SimpleCov.start "rails"
 require "spec_helper"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "shoulda/matchers"
-require "simplecov"
-SimpleCov.start "rails"
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
