@@ -12,7 +12,7 @@
             th = active_link_to "Created at", sort_column: :created_at,
                                             sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
             th colspan = 3 = active_link_to "Updated at", sort_column: :updated_at,
-                                                        sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
+                                            sort_direction: params[:sort_direction] == "asc" ? "desc" : "asc"
         tbody
             = render @games
     = paginate @games
