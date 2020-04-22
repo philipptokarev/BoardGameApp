@@ -38,7 +38,7 @@ blocks:
       jobs:
         - name: Bundle
           commands:
-          - gem install bundle -v ${BUNDLE_ARGS}
+          - gem install bundler -v ${BUNDLE_ARGS}
           - bundle install ${BUNDLE_ARGS}
           - cache store
 
