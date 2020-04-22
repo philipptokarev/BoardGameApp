@@ -25,6 +25,8 @@ global_job_config:
       value: 'postgresql://postgres@localhost/test?encoding=utf8'
     - name: BUNDLE_ARGS
       value: '--deployment --without development staging production --jobs 4'
+    - name: BUNDLE_VERSION
+      value: 1.17.3
 
   prologue:
     commands:
@@ -38,6 +40,7 @@ blocks:
       jobs:
         - name: Bundle
           commands:
+          - gem install bundler -v ${BUNDLE_VERSION}
           - bundle install ${BUNDLE_ARGS}
           - cache store
 
@@ -46,6 +49,7 @@ blocks:
       jobs:
         - name: Quality
           commands:
+            - gem install bundler -v ${BUNDLE_VERSION}
             - bundle install ${BUNDLE_ARGS} --local
             - bin/quality
 
@@ -53,6 +57,7 @@ blocks:
     task:
       prologue:
         commands:
+          - gem install bundler -v ${BUNDLE_VERSION}
           - sem-version ruby 2.5.7
           - bundle install ${BUNDLE_ARGS} --local
           - sem-service start postgres
@@ -66,10 +71,6 @@ blocks:
       - name: Features
         commands:
           - bin/rspec --tag type:feature
-
-      - name: Jasmine
-        commands:
-          - bundle exec rails jasmine:ci
 
 promotions:
   - name: Deploy to Heroku

@@ -28,10 +28,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:image, :description)
   end
 
-  def msg_params
-    params.require(:message).permit(:name, :email, :text, :user_id)
-  end
-
   def correct_user
     redirect_to(root_path, alert: "You do not have access to this page") unless current_user.id == user.id
   end
