@@ -47,6 +47,7 @@ blocks:
       jobs:
         - name: Quality
           commands:
+            - gem install bundler -v 1.17.3
             - bundle install ${BUNDLE_ARGS} --local
             - bin/quality
 
@@ -54,6 +55,7 @@ blocks:
     task:
       prologue:
         commands:
+          - gem install bundler -v 1.17.3
           - sem-version ruby 2.5.7
           - bundle install ${BUNDLE_ARGS} --local
           - sem-service start postgres
@@ -67,10 +69,6 @@ blocks:
       - name: Features
         commands:
           - bin/rspec --tag type:feature
-
-      - name: Jasmine
-        commands:
-          - bundle exec rails jasmine:ci
 
 promotions:
   - name: Deploy to Heroku
